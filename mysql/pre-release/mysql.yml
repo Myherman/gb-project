@@ -92,6 +92,4 @@
         dest: "./mysql/docker-compose.yml"
 
     - name: MySQL | Run mysql cluster
-      community.docker.docker_compose_v2:
-        project_name: mysql
-        project_src: "./mysql"
+      andible.builtin.shell: cd ./mysql && docker-compose up -d
