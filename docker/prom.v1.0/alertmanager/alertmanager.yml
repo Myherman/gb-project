@@ -1,0 +1,26 @@
+global:
+  resolve_timeout: 10s
+
+route:
+  group_by: ['alertname']
+  group_wait: 3s
+  receiver: 'telegram_bot'
+
+receivers:
+- name: 'telegram_bot'
+  telegram_configs:
+  - bot_token: '6892540224:AAHjb1bbvH9OhUGjaVfEzlhOAVIJycXFDZg'
+    api_url: 'https://core.telegram.org/bots/api'
+    chat_id: 1370800123
+    parse_mode: 'HTML'
+
+
+
+# route:
+#     receiver: 'alertmanager-bot'
+
+# receivers:
+# - name: 'alertmanager-bot'
+#   webhook_configs:
+#   - send_resolved: true
+#     url: 'http://alertmanager-bot:8080'
