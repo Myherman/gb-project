@@ -3,6 +3,7 @@ version: '2'
 services:
   mysql-master:
     image: {{ mysql_image }}
+    restart: unless-stopped
     ports:
       - '3306:3306'
     volumes:
@@ -18,6 +19,7 @@ services:
 
   mysql-slave:
     image: {{ mysql_image }}
+    restart: unless-stopped
     ports:
       - '3307:3306'
     volumes:
