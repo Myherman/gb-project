@@ -18,27 +18,6 @@ services:
     networks:
       - default
 
-#  node-exporter:
-#    image: prom/node-exporter
-#    volumes:
-#      - /proc:/host/proc:ro
-#      - /sys:/host/sys:ro
-#      - /:/rootfs:ro
-#    container_name: exporter
-#    hostname: exporter
-#    command:
-#      - --path.procfs=/host/proc
-#      - --path.sysfs=/host/sys
-#      - --collector.filesystem.ignored-mount-points
-#      - ^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)
-#    ports:
-#      - 9100:9100
-#    restart: unless-stopped
-#    environment:
-#      TZ: "Europe/Moscow"
-#    networks:
-#      - default
-  
   grafana:
     image: grafana/grafana:9.2.6
     user: root
@@ -69,43 +48,5 @@ services:
       - '--config.file=/etc/alertmanager/alertmanager.yml'
     networks:
       - default    
-  # alertmanager-bot:
-  #   command:
-  #     - --alertmanager.url=http://alertmanager:9093
-  #     - --log.level=info
-  #     - --store=bolt
-  #     - --bolt.path=/data/bot.db
-  #     - --telegram.admin=1370800123
-  #     - --telegram.token=6892540224:AAHjb1bbvH9OhUGjaVfEzlhOAVIJycXFDZg
-  #   image: metalmatze/alertmanager-bot:0.4.3
-  #   user: root
-  #   ports:
-  #     - 8080:8080
-  #   container_name: alertmanager-bot
-  #   hostname: alertmanager-bot
-  #   environment:
-  #     TZ: "Europe/Moscow"
-  #   restart: unless-stopped
-  #   volumes:
-  #     - ./data:/data
-  #   networks:
-  #     - default
-  
-  # alertmanager:
-  #   image: prom/alertmanager:v0.21.0
-  #   user: root
-  #   ports:
-  #     - 127.0.0.1:9093:9093
-  #   volumes:
-  #     - ./alertmanager/:/etc/alertmanager/
-  #   container_name: alertmanager
-  #   hostname: alertmanager
-  #   environment:
-  #     TZ: "Europe/Moscow"
-  #   restart: unless-stopped
-  #   command:
-  #     - '--config.file=/etc/alertmanager/config.yml'
-  #     - '--storage.path=/etc/alertmanager/data'
-  #   networks:
-  #      - default
+ 
 
